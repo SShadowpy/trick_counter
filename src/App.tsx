@@ -2,24 +2,23 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Intro from './components/intro'
+import Gamepage from './components/gamepage'
 function App() {
+  const [game, setGame] = React.useState(true)
+  const [gameLimit, setGameLimit] = React.useState(0)
+  function startGame1(){
+    setGameLimit(15)
+    setGame(false)
+  }
+  function startGame2(){
+    setGameLimit(30)
+    setGame(false)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    game ? 
+    <Intro handleClick1={startGame1} handleClick2={startGame2}/> :
+    <Gamepage gamelimit={gameLimit}/>
   );
 }
 
